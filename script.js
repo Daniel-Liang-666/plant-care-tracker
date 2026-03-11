@@ -15,7 +15,16 @@ const commonPlants = [
     { id: 6, name: '富贵竹', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=lucky%20bamboo%20plant%20with%20green%20stems&image_size=square' },
     { id: 7, name: '鸡冠子', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=cockscomb%20flower%20with%20red%20crest&image_size=square' },
     { id: 8, name: '夜来香', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=evening%20primrose%20flower%20with%20yellow%20petals&image_size=square' },
-    { id: 9, name: '玫瑰花', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=rose%20flower%20with%20red%20petals&image_size=square' }
+    { id: 9, name: '玫瑰花', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=rose%20flower%20with%20red%20petals&image_size=square' },
+    { id: 10, name: '槐花', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=locust%20flower%20with%20white%20petals&image_size=square' },
+    { id: 11, name: '龟背竹', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=monstera%20plant%20with%20split%20leaves&image_size=square' },
+    { id: 12, name: '文竹', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=asparagus%20fern%20with%20delicate%20leaves&image_size=square' },
+    { id: 13, name: '君子兰', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=clivia%20plant%20with%20orange%20flowers&image_size=square' },
+    { id: 14, name: '发财树', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=money%20tree%20plant%20with%20braided%20trunk&image_size=square' },
+    { id: 15, name: '常春藤', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=ivy%20plant%20with%20climbing%20vines&image_size=square' },
+    { id: 16, name: '虎皮兰', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=sansevieria%20plant%20with%20striped%20leaves&image_size=square' },
+    { id: 17, name: '杜鹃花', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=azalea%20flower%20with%20pink%20petals&image_size=square' },
+    { id: 18, name: '茉莉花', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=jasmine%20flower%20with%20white%20petals&image_size=square' }
 ];
 
 // 初始化
@@ -29,16 +38,11 @@ function init() {
 
 // 从本地存储加载数据
 function loadFromLocalStorage() {
-    const savedPlants = localStorage.getItem('plants');
-    const savedWaterings = localStorage.getItem('waterings');
+    // 强制更新植物数据，清除旧的本地存储
+    plants = commonPlants;
+    localStorage.setItem('plants', JSON.stringify(plants));
     
-    if (savedPlants) {
-        plants = JSON.parse(savedPlants);
-    } else {
-        // 添加预生成数据
-        plants = commonPlants;
-        localStorage.setItem('plants', JSON.stringify(plants));
-    }
+    const savedWaterings = localStorage.getItem('waterings');
     
     if (savedWaterings) {
         waterings = JSON.parse(savedWaterings);
