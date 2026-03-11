@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>花草养护记录</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>花草养护记录</h1>
+            <p>轻松记录每一次养护，让植物健康成长</p>
+        </header>
+        
+        <main>
+            <!-- 植物选择区域 -->
+            <section id="plant-selection">
+                <h2>选择植物</h2>
+                <div class="plant-grid" id="plant-grid">
+                    <!-- 植物卡片将通过JavaScript动态生成 -->
+                </div>
+            </section>
+            
+            <!-- 浇水记录区域 -->
+            <section id="watering-section">
+                <h2>浇水记录</h2>
+                <div id="selected-plant" class="selected-plant">
+                    <p>请先选择一盆植物</p>
+                </div>
+                <button id="water-btn" class="water-btn" disabled>浇水</button>
+                <div class="record-details">
+                    <textarea id="status-desc" placeholder="添加状态描述（可选）"></textarea>
+                    <input type="file" id="photo-upload" accept="image/*">
+                </div>
+            </section>
+            
+            <!-- 日历区域 -->
+            <section id="calendar-section">
+                <h2>养护日历</h2>
+                <div id="calendar"></div>
+                <div id="calendar-details" class="calendar-details">
+                    <!-- 日历详情将通过JavaScript动态生成 -->
+                </div>
+            </section>
+            
+            <!-- 数据统计区域 -->
+            <section id="stats-section">
+                <h2>养护统计</h2>
+                <div id="stats-content"></div>
+            </section>
+            
+            <!-- 植物历史记录区域 -->
+            <section id="history-section">
+                <h2>植物历史记录</h2>
+                <select id="plant-history-select">
+                    <option value="">选择植物查看历史</option>
+                </select>
+                <div id="plant-history" class="plant-history">
+                    <!-- 历史记录将通过JavaScript动态生成 -->
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>© 2026 花草养护记录</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

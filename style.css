@@ -1,0 +1,433 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f6f0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=soft%20natural%20plant%20pattern%20background%20subtle&image_size=landscape_16_9');
+    background-size: cover;
+    background-attachment: fixed;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+/* 莫兰迪色系 - 更温馨的色调 */
+:root {
+    --primary: #b8a99a;
+    --secondary: #d8d6d6;
+    --accent: #e3c19f;
+    --background: #f9f6f0;
+    --text: #6a6a6a;
+    --light: #f5f0e5;
+    --dark: #9b8f80;
+    --warm: #f2e8dc;
+}
+
+/* 头部样式 */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 40px 20px;
+    background-color: var(--warm);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--accent);
+}
+
+header h1 {
+    color: var(--dark);
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+header p {
+    color: var(--text);
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+/* 主内容区域 */
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+section {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--light);
+}
+
+section:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+section h2 {
+    color: var(--dark);
+    margin-bottom: 25px;
+    font-size: 1.6rem;
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 12px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* 植物选择区域 */
+.plant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+}
+
+.plant-card {
+    background-color: var(--warm);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.plant-card:hover {
+    transform: scale(1.08);
+    border-color: var(--accent);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.plant-card.selected {
+    border-color: var(--accent);
+    background-color: #f0e8e0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.plant-image {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid var(--light);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.plant-name {
+    font-weight: bold;
+    color: var(--text);
+    font-size: 1.1rem;
+}
+
+/* 浇水记录区域 */
+.selected-plant {
+    background-color: var(--light);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.weather-display {
+    background-color: var(--light);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.weather-info {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1rem;
+    color: var(--text);
+}
+
+.weather-info span {
+    font-weight: bold;
+}
+
+.water-btn {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-bottom: 25px;
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.water-btn:hover:not(:disabled) {
+    background-color: var(--dark);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.water-btn:disabled {
+    background-color: var(--secondary);
+    cursor: not-allowed;
+}
+
+.record-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid var(--light);
+    border-radius: 12px;
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: var(--warm);
+    transition: all 0.3s ease;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(211, 177, 143, 0.2);
+}
+
+input[type="file"] {
+    padding: 15px;
+    border: 2px solid var(--light);
+    border-radius: 12px;
+    background-color: var(--warm);
+    transition: all 0.3s ease;
+}
+
+input[type="file"]:hover {
+    border-color: var(--accent);
+}
+
+/* 日历区域 */
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.calendar-day {
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: var(--warm);
+    border: 1px solid var(--light);
+}
+
+.calendar-day:hover {
+    background-color: var(--light);
+    transform: scale(1.05);
+}
+
+.calendar-day.has-watering {
+    background-color: var(--accent);
+    color: white;
+    font-weight: bold;
+}
+
+.calendar-day.today {
+    font-weight: bold;
+    border: 3px solid var(--accent);
+    background-color: #f0e8e0;
+}
+
+.calendar-details {
+    background-color: var(--warm);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid var(--light);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* 数据统计区域 */
+#stats-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.stat-item {
+    background-color: var(--warm);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--light);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-label {
+    font-weight: bold;
+    color: var(--text);
+    font-size: 1.1rem;
+}
+
+.stat-value {
+    color: var(--dark);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+/* 植物历史记录区域 */
+#plant-history-select {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid var(--light);
+    border-radius: 12px;
+    margin-bottom: 25px;
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: var(--warm);
+    transition: all 0.3s ease;
+}
+
+#plant-history-select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(211, 177, 143, 0.2);
+}
+
+.plant-history {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.history-item {
+    background-color: var(--warm);
+    border-radius: 12px;
+    padding: 20px;
+    border-left: 5px solid var(--accent);
+    border: 1px solid var(--light);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.history-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.history-date {
+    font-weight: bold;
+    color: var(--dark);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.history-desc {
+    color: var(--text);
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.history-photo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 15px;
+    border: 3px solid var(--light);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 底部样式 */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px 0;
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .plant-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section {
+    animation: fadeIn 0.5s ease;
+}
+
+.plant-card {
+    animation: fadeIn 0.3s ease;
+}
+
+/* 加载动画 */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid var(--secondary);
+    border-radius: 50%;
+    border-top-color: var(--accent);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
